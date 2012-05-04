@@ -29,6 +29,6 @@ The AMR data can not be viewed with the same.
 
 MANUAL :
 Further details of the Installation and Getting Started can be found in the
-manual.pdf attached with this code in the doc/ folder. 
+pyPLUTO.pdf  attached with this code in the doc/latex folder. 
 
 
