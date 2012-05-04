@@ -1,0 +1,182 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Loading the Data &mdash; pyPLUTO 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="pyPLUTO 1.0 documentation" href="index.html" />
+    <link rel="next" title="Viewing the Data" href="image.html" />
+    <link rel="prev" title="Installation" href="install.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="image.html" title="Viewing the Data"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="install.html" title="Installation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">pyPLUTO 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="loading-the-data">
+<h1>Loading the Data<a class="headerlink" href="#loading-the-data" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="pyPLUTO.pload">
+<em class="property">class </em><tt class="descclassname">pyPLUTO.</tt><tt class="descname">pload</tt><big>(</big><em>ns</em>, <em>w_dir=None</em><big>)</big><a class="headerlink" href="#pyPLUTO.pload" title="Permalink to this definition">¶</a></dt>
+<dd><p>This Class has all the routines loading the data from the
+binary files output from PLUTO Simulations. Assign an object
+when the data is loaded for some <em>ns</em>.</p>
+<p><em>Usage</em>:</p>
+<p><tt class="docutils literal"><span class="pre">import</span> <span class="pre">pyPLUTO</span> <span class="pre">as</span> <span class="pre">pp</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">wdir</span> <span class="pre">=</span> <span class="pre">'/path/to/the</span> <span class="pre">data</span> <span class="pre">files/'</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">D</span> <span class="pre">=</span> <span class="pre">pp.pload(1,w_dir=wdir)</span></tt></p>
+<p>Now D is the pyPLUTO.pload object having all the relevant information
+of the corresponding data file - data.0001.dbl.</p>
+<p>It has the following attributes &#8211;</p>
+<dl class="method">
+<dt id="pyPLUTO.pload.data">
+<tt class="descname">data</tt><big>(</big><big>)</big><a class="headerlink" href="#pyPLUTO.pload.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method loads the data from the file name &#8220;data.ns.dbl&#8221; or &#8220;varname.ns.dbl&#8221;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyPLUTO.pload.geometry">
+<tt class="descname">geometry</tt><big>(</big><big>)</big><a class="headerlink" href="#pyPLUTO.pload.geometry" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method has the geometry information of the problem considered.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyPLUTO.pload.get_varinfo">
+<tt class="descname">get_varinfo</tt><big>(</big><big>)</big><a class="headerlink" href="#pyPLUTO.pload.get_varinfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method reads the dbl.out and stores the information in a dictionary.</p>
+<p><em>Keyword Arguments</em>:</p>
+<p>fltype &#8211; returns the filetype of storing data (single_file or multiple_file)</p>
+<p>nvar &#8211; Number of variables</p>
+<p>allvars &#8211; A list of variables names. Each of the variable name will be the attributes to the pyPLUTO.pload object.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyPLUTO.pload.grid">
+<tt class="descname">grid</tt><big>(</big><big>)</big><a class="headerlink" href="#pyPLUTO.pload.grid" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method returns the necessary grid information in form a dictionary.</p>
+<p><em>Keyword Arguments</em>:</p>
+<p>n1 &#8211; number of grid cells in x1 direction</p>
+<p>n2 &#8211; number of grid cells in x2 direction</p>
+<p>n3 &#8211; number of grid cells in x3 direction</p>
+<p>x1 &#8211; Array x1</p>
+<p>x2 - Array x2</p>
+<p>x3 - Array x3</p>
+<p>dx1 - Array dx1</p>
+<p>dx2 - Array dx2</p>
+<p>dx3 - Array dx3</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pyPLUTO.pload.time_info">
+<tt class="descname">time_info</tt><big>(</big><big>)</big><a class="headerlink" href="#pyPLUTO.pload.time_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method returns a dictionary that has the time information for the
+step ns.</p>
+<p><em>Keyword Arguments</em>:</p>
+<p>time &#8211; Gets the simulation time at step ns.</p>
+<p>dt &#8211; Get the time step dt for step ns.</p>
+<p>Nstep &#8211; Get the value of nstep for the step ns.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="install.html"
+                        title="previous chapter">Installation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="image.html"
+                        title="next chapter">Viewing the Data</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/pload.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="image.html" title="Viewing the Data"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="install.html" title="Installation"
+             >previous</a> |</li>
+        <li><a href="index.html">pyPLUTO 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Bhargav Vaidya , Denis Stepanovs.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.2.
+    </div>
+  </body>
+</html>
