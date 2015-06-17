@@ -158,9 +158,11 @@ class pload(object):
         fname_g = self.wdir+"grid.out"
         f_grid=open(fname_g)
         lnum_g = len(f_grid.readlines())
-        n1 = linecache.getline(fname_g,1)
-        n2 = linecache.getline(fname_g,int(n1)+2)
-        n3 = linecache.getline(fname_g,int(n1)+int(n2)+3)
+        # have to make smart code that does pattern matching to find values of n below
+        #####
+        n1 = linecache.getline(fname_g,10)
+        n2 = linecache.getline(fname_g,int(n1)+11)
+        n3 = linecache.getline(fname_g,int(n1)+int(n2)+12)
         x1=[]
         x2=[]
         x3=[]
