@@ -176,7 +176,7 @@ class pload(object):
 	dx2=[]
 	dx3=[]
 
-	for i in range(11,n1+10):
+	for i in range(ndim+9,n1+ndim+8):
 		A = linecache.getline(fname_g,i).split()
 		x1.append(float(A[1]))
 		dx1.append(float(A[2]))
@@ -184,7 +184,7 @@ class pload(object):
 	x1 = np.asarray(x1)
 	dx1 = np.asarray(dx1)
 
-	for j in range(12+n1,n1+n2+11):
+	for j in range(n1+ndim+10,n1+n2+ndim+9):
 	    B = linecache.getline(fname_g,j).split()
 	    x2.append(float(B[1]))
 	    dx2.append(float(B[2]))
@@ -192,7 +192,7 @@ class pload(object):
 	x2 = np.asarray(x2)
 	dx2 = np.asarray(dx2)
 
-	for k in range(13+n1+n2,lnum_g+1):
+	for k in range(n1+n2+ndim+11,lnum_g+1):
 	    C = linecache.getline(fname_g,k).split()
 	    x3.append(float(C[1]))
 	    dx3.append(float(C[2]))
