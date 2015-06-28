@@ -154,46 +154,55 @@ class pload(object):
 	dx2 - Array dx2\n
 	dx3 - Array dx3\n
 	"""
-	    
-        fname_g = self.wdir+"grid.out"
-        f_grid=open(fname_g)
-        lnum_g = len(f_grid.readlines())
-        n1 = linecache.getline(fname_g,1)
-        n2 = linecache.getline(fname_g,int(n1)+2)
-        n3 = linecache.getline(fname_g,int(n1)+int(n2)+3)
-        x1=[]
-        x2=[]
-        x3=[]
-        dx1=[]
-        dx2=[]
-        dx3=[]
-        for i in range(2,int(n1)+2):
-            A = linecache.getline(fname_g,i).split()
-            x1.append(float(A[2]))
-            dx1.append(float(A[4]))
-        
-        x1 = np.asarray(x1)
-        dx1 = np.asarray(dx1)
+	fname_g = self.wdir+"grid.out"
+	f_grid= open(fname_g)
+	lnum_g = len(f_grid.readlines())
 
-        for j in range(3+int(n1),int(n1)+int(n2)+3):
-            B = linecache.getline(fname_g,j).split()
-            x2.append(float(B[2]))
-            dx2.append(float(B[4]))
-        
-        x2 = np.asarray(x2)
-        dx2 = np.asarray(dx2)
+	# figure out number of dimensions of the problem
+	ndim=linecache.getline(fname_g,5).split()
+	ndim=int(ndim[2])
 
-        for k in range(4+int(n1)+int(n2),lnum_g+1):
-            C = linecache.getline(fname_g,k).split()
-            x3.append(float(C[2]))
-            dx3.append(float(C[4]))
+	# number of points for each coordinate
+	n1 = linecache.getline(fname_g,8+ndim)
+	n1 = int(n1)
+	n2 = linecache.getline(fname_g,9+ndim+n1)
+	n2 = int(n2)
+	n3 = linecache.getline(fname_g,10+ndim+n1+n2)
+	n3 = int(n3)
+	x1=[]
+	x2=[]
+	x3=[]
+	dx1=[]
+	dx2=[]
+	dx3=[]
 
-        x3 = np.asarray(x3)
-        dx3 = np.asarray(dx3)
+	for i in range(ndim+9,n1+ndim+8):
+		A = linecache.getline(fname_g,i).split()
+		x1.append(float(A[1]))
+		dx1.append(float(A[2]))
 
-        f_grid.close()
-	
-        grid_dict={'n1':int(n1),'n2':int(n2),'n3':int(n3),'x1':x1,'x2':x2,'x3':x3,'dx1':dx1,'dx2':dx2,'dx3':dx3}
+	x1 = np.asarray(x1)
+	dx1 = np.asarray(dx1)
+
+	for j in range(n1+ndim+10,n1+n2+ndim+9):
+	    B = linecache.getline(fname_g,j).split()
+	    x2.append(float(B[1]))
+	    dx2.append(float(B[2]))
+	 
+	x2 = np.asarray(x2)
+	dx2 = np.asarray(dx2)
+
+	for k in range(n1+n2+ndim+11,lnum_g+1):
+	    C = linecache.getline(fname_g,k).split()
+	    x3.append(float(C[1]))
+	    dx3.append(float(C[2]))
+
+	x3 = np.asarray(x3)
+	dx3 = np.asarray(dx3)
+
+	f_grid.close()
+	 
+	grid_dict={'n1':n1,'n2':n2,'n3':n3,'x1':x1,'x2':x2,'x3':x3,'dx1':dx1,'dx2':dx2,'dx3':dx3}
 
 	return grid_dict
 
